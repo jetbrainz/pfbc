@@ -1,5 +1,6 @@
 {
     "name": "JetBrainz/pfbc",
+    "version": "1.0.0",
     "minimum-stability": "dev",
     "license": "GNU GPL v3",
     "require": {
