@@ -1,7 +1,6 @@
 {
     "name": "JetBrainz/pfbc",
     "version": "1.0.0",
-    "stability": "stable",
     "license": "GNU GPL v3",
     "require": {
         "php": ">=5.3.0"
