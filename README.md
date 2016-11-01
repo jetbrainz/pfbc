@@ -14,7 +14,7 @@ The most significant enhancement in version 3.x is the integration with Bootstra
 
 ## System Requirements
 
-PHP 5 >= 5.3
+PHP 7 >= 7.0
 
 ## Installation Instructions
 
