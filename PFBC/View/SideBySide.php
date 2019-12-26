@@ -15,6 +15,11 @@ class SideBySide extends \PFBC\View {
 		$elementCount = 0;
 		for($e = 0; $e < $elementSize; ++$e) {
 			$element = $elements[$e];
+			$wr1 = $wr2 = '';
+			if (!empty ($element->getAttribute('elementwidth'))) {
+				$wr1 = '<div class="col-md-6">';
+				$wr2 = '</div>';
+			}
 
 			if($element instanceof \PFBC\Element\Hidden || $element instanceof \PFBC\Element\HTML)
 				$element->render();
@@ -29,13 +34,13 @@ class SideBySide extends \PFBC\View {
                 if(($e + 1) == $elementSize || !$elements[($e + 1)] instanceof \PFBC\Element\Button)
                     echo '</div>';
             } elseif ($element instanceof \PFBC\Element\Radio) {
-				echo '<div class="radio2" id="element_', $element->getAttribute('id'), '">', $this->renderLabel($element), '', $element->render(), $this->renderDescriptions($element), '</div>';
+				echo $wr1, '<div class="radio2" id="element_', $element->getAttribute('id'), '">', $this->renderLabel($element), '', $element->render(), $this->renderDescriptions($element), '</div>', $wr2;
 				++$elementCount;
 			} elseif ($element instanceof \PFBC\Element\Checkbox) {
-				echo '<div class="checkbox2" id="element_', $element->getAttribute('id'), '">', $this->renderLabel($element), '', $element->render(), $this->renderDescriptions($element), '</div>';
+				echo $wr1, '<div class="checkbox2" id="element_', $element->getAttribute('id'), '">', $this->renderLabel($element), '', $element->render(), $this->renderDescriptions($element), '</div>', $wr2;
 				++$elementCount;
 			} else {
-				echo '<div class="form-group" id="element_', $element->getAttribute('id'), '">', $this->renderLabel($element), '', $element->render(), $this->renderDescriptions($element), '</div>';
+				echo $wr1, '<div class="form-group" id="element_', $element->getAttribute('id'), '">', $this->renderLabel($element), '', $element->render(), $this->renderDescriptions($element), '</div>', $wr2;
 				++$elementCount;
 			}
 		}
