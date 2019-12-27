@@ -27,14 +27,21 @@ class Checkbox extends \PFBC\OptionElement {
 			$wr1 = '<div class="clear"><div class="col-sm-'.$this->_attributes['controlwidth'].'">';
 			$wr2 = '</div></div>';
 		}
-
+		echo '<br clear="all" />';
 		foreach($this->options as $value => $text) {
 			$value = $this->getOptionValue($value);
 
+		    if (empty ($this->_attributes['labelOutside'])) {
+			echo $wr1.'<input id="', $this->_attributes["id"], '-', $count, '"', $this->getAttributes(array("id", "value", "checked", "required")), ' value="', $this->filter($value), '"';
+			if(in_array($value, $this->_attributes["value"]))
+			    echo ' checked="checked"';
+			echo '/> <label for="', $this->_attributes["id"],  '-', $count, '" class="' , $labelClass , '">', $text, ' </label> '.$wr2;
+		    } else {
 			echo $wr1.'<label class="', $labelClass, '"> <input id="', $this->_attributes["id"], '-', $count, '"', $this->getAttributes(array("id", "value", "checked", "required")), ' value="', $this->filter($value), '"';
 			if(in_array($value, $this->_attributes["value"]))
-				echo ' checked="checked"';
+			    echo ' checked="checked"';
 			echo '/> ', $text, ' </label> '.$wr2;
+		    }
 			++$count;
 		}
 	}
