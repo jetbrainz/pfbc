@@ -27,10 +27,10 @@ class Radio extends \PFBC\OptionElement {
 		foreach($this->options as $value => $text) {
 			$value = $this->getOptionValue($value);
 
-			echo $wr1.'<label class="', $labelClass . '"> <input id="', $this->_attributes["id"], '-', $count, '"', $this->getAttributes(array("id", "value", "checked")), ' value="', $this->filter($value), '"';
+			echo $wr1.'<label class="custom-control custom-radio ', $labelClass , '"> <input id="', $this->_attributes["id"], '-', $count, '"', $this->getAttributes(array("id", "value", "checked")), ' value="', $this->filter($value), '"';
 			if(isset($this->_attributes["value"]) && $this->_attributes["value"] == $value)
 				echo ' checked="checked"';
-			echo '/> ', $text, ' </label> '.$wr2;
+			echo ' class="custom-control-input"/><span class="custom-control-label"> ', $text, ' </span></label> '.$wr2;
 			++$count;
 		}
 		echo $wr22;
